@@ -9,7 +9,7 @@ on:
 
 env:
   AZURE_RESOURCE_GROUP: devops-test              # set this to your Azure Resource group's name
-  AZURE_STORAGE_ACCOUNT: joshstorageaccount      # set this to your Azure Storage account name for images
+  AZURE_STORAGE_ACCOUNT: joshistorageaccount      # set this to your Azure Storage account name for images
   AZURE_LOCATION: eastus                          # set this to your azure resource group location   
   AZURE_APP_PLAN: devopscoreplan                    # set netcoreplan  
   AZURE_APIAPP_NAME: devopsapiapp                 # set this to your API Website name
