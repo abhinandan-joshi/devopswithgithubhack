@@ -7,3 +7,4 @@ Contoso recently started a new web and mobile projects to allow policyholders, b
 
 
 ![Solution BluePrint](/images/solutionblueprint.png)
+
