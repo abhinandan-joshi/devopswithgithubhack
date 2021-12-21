@@ -9,7 +9,7 @@ on:
 
 env:
   AZURE_RESOURCE_GROUP: devops-test              # set this to your Azure Resource group's name
-  AZURE_STORAGE_ACCOUNT: devopstorageaccount      # set this to your Azure Storage account name for images
+  AZURE_STORAGE_ACCOUNT: joshstorageaccount      # set this to your Azure Storage account name for images
   AZURE_LOCATION: eastus                          # set this to your azure resource group location   
   AZURE_APP_PLAN: devopscoreplan                    # set netcoreplan  
   AZURE_APIAPP_NAME: devopsapiapp                 # set this to your API Website name
@@ -32,6 +32,7 @@ jobs:
         with:
          azcliversion: latest
          inlineScript: |
+          az group create --name ${{ env.AZURE_RESOURCE_GROUP }} --location ${{ env.AZURE_LOCATION }} 
           az appservice plan create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --name ${{ env.AZURE_APP_PLAN }} --is-linux --sku S1
           az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_APIAPP_NAME }}  --runtime "DOTNETCORE|3.1"
           az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_WEBAPP_NAME }}  --runtime "DOTNETCORE|3.1"
