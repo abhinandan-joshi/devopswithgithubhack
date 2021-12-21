@@ -3,7 +3,7 @@ name: mySql database automation
 on:
   push:
     branches:
-      - Hackthon
+      - Hackathon
     paths:
     - 'readme.md' 
 
