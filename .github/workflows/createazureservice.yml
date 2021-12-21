@@ -1,0 +1,39 @@
+name: Azure Service Creation Workflow for ASPNETMVC Lab
+
+on:
+  push:
+    branches:
+    - Hackathon
+    paths:
+    - SERVICECREATE.md
+
+env:
+  AZURE_RESOURCE_GROUP: devops-test              # set this to your Azure Resource group's name
+  AZURE_STORAGE_ACCOUNT: devopstorageaccount      # set this to your Azure Storage account name for images
+  AZURE_LOCATION: eastus                          # set this to your azure resource group location   
+  AZURE_APP_PLAN: devopscoreplan                    # set netcoreplan  
+  AZURE_APIAPP_NAME: devopsapiapp                 # set this to your API Website name
+  AZURE_WEBAPP_NAME: devopsfrontweb               # set this to your frontend website name
+
+
+jobs:
+  CREATEAZURESERVICES:
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - uses: actions/checkout@master  # Checkout the repo to Hosted Runner 
+      - uses: azure/login@v1  	       # Authenticate to Azure
+        with:
+          creds: ${{ secrets.DEPLOYGITHUB }}  
+      - name: Azure CLI script to create azure services on subscription
+        uses: azure/CLI@v1
+        with:
+         azcliversion: latest
+         inlineScript: |
+          az appservice plan create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --name ${{ env.AZURE_APP_PLAN }} --is-linux --sku S1
+          az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_APIAPP_NAME }}  --runtime "DOTNETCORE|3.1"
+          az webapp create --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --plan ${{ env.AZURE_APP_PLAN }} --name ${{ env.AZURE_WEBAPP_NAME }}  --runtime "DOTNETCORE|3.1"
+          az storage account create -n ${{ env.AZURE_STORAGE_ACCOUNT }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }} -l ${{ env.AZURE_LOCATION }} --sku Standard_LRS --allow-blob-public-access true
+          az storage container create -n images --account-name ${{ env.AZURE_STORAGE_ACCOUNT }} --public-access blob
