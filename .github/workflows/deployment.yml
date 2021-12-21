@@ -3,9 +3,9 @@ name: mySql database automation
 on:
   push:
     branches:
-      - AzureMYSQLDatabase
+      - Hackthon
     paths:
-    - 'readmeformysql.md' 
+    - 'readme.md' 
 
 env:
   AZURE_RESOURCE_GROUP: devops-test               # set this to your Azure Resource group's name  
