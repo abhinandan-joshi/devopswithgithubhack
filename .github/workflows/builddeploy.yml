@@ -111,4 +111,4 @@ jobs:
         uses: azure/webapps-deploy@v2
         with: 
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
-          package: '/home/runner/work/${{ env.GITHUB_REPOSISTORY_NAME }}/${{ env.GITHUB_REPOSISTORY_NAME }}/src/Web/webapp'
+          package: '/home/runner/work/${{ env.GITHUB_REPOSISTORY_NAME }}/${{ env.GITHUB_REPOSISTORY_NAME }}/src/Contoso.Web'
