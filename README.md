@@ -1,6 +1,5 @@
 # Welcome to Devops With GitHub Hackathon
 
-
 ## Overview
 
 Contoso is Insurance company, they provide a full range of long-term insurance services to help individuals who are under-insured. From the beginning, they grew faster than anticipated and have struggled to cope with rapid growth. During their first year alone, they added over 100 new employees to keep up with the demand for their services. To manage policies and associated documentation, they use a custom-developed Windows Forms application, called Policy Connect. Policy Connect uses an Azure Sql database as its data store. 
