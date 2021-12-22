@@ -42,11 +42,11 @@ jobs:
         with:
          azcliversion: latest
          inlineScript: |
-           az webapp config appsettings set -g ${{ env.RESOURCEGROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBNAME=hackthon-db
-           az webapp config appsettings set -g ${{ env.RESOURCEGROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBUSER=kl-admin
-           az webapp config appsettings set -g ${{ env.RESOURCEGROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBPASS=myPass@123
-           az webapp config appsettings set -g ${{ env.RESOURCEGROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBHOST=hackthon-server.database.windows.net
-           az webapp config appsettings set -g ${{ env.RESOURCEGROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBPORT=1433
+           az webapp config appsettings set -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBNAME=hackthon-db
+           az webapp config appsettings set -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBUSER=kl-admin
+           az webapp config appsettings set -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBPASS=myPass@123
+           az webapp config appsettings set -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBHOST=hackthon-server.database.windows.net
+           az webapp config appsettings set -g ${{ env.AZURE_RESOURCE_GROUP }} -n ${{ env.AZURE_APIAPP_NAME }} --settings DBPORT=1433
  
       # Setup .NET Core SDK
       - name: Setup .NET Core
